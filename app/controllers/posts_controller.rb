@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
 
 	def create
-    @post = current_user.posts.new(post_params)
+		@post = Post.new(post_params)
+		@post.user_id = current_user.id
     tag_list = params[:post][:tag_name].split(nil)
     if @post.save
       @post.save_tag(tag_list)
@@ -12,9 +13,10 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@post = Post.all
-		@tag = Tag.all
-		@post = current_user.posts.new
+		@posts = Post.all
+		@tag_list = Tag.all
+		post = Post.new
+		@user = current_user
 	end
 
 	def show

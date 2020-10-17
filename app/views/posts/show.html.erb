@@ -1,0 +1,10 @@
+<h1>投稿詳細</h1>
+
+<p>@post.content</p>
+
+<% @post_tags.each do |tag| %>
+	<%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
+	<span>(#{tag.posts.count})</span>
+<% end %>
+
+<%= link_to 'ホーム', root_path %>
