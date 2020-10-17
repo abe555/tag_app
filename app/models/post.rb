@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
 
+
   def save_tag(sent_tags)
   	current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
   	old_tags = current_tags - sent_tags
