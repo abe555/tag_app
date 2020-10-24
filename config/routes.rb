@@ -6,4 +6,9 @@ Rails.application.routes.draw do
 
   resource :posts
 
+  resource :tags do
+  	get 'posts' => 'posts#search'
+  end
+
 end
+
