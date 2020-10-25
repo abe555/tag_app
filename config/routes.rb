@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   root "posts#index"
 
-  resource :posts
+  resources :posts
+
+  resources :tags do
+  	get 'posts' => 'posts#search'
+  end
 
 end
+

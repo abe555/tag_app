@@ -24,6 +24,11 @@ class PostsController < ApplicationController
 		@post_tags = @post.tags
 	end
 
+	def search
+		@tag_list= Tag.all
+		@tag = Tag.find(params[:tag_id])
+		@posts = @tag.posts.all
+	end
 
 	private
 		def post_params
