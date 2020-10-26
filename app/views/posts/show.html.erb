@@ -1,10 +1,24 @@
-<h1>投稿詳細</h1>
+<div class="container">
 
-<p>@post.content</p>
+	<div class="posts">
+		<h1>投稿詳細</h1>
 
-<% @post_tags.each do |tag| %>
-	<%= link_to tag.tag_name, tag_posts_path(tag_id: tag.id) %>
-	<span>(#{tag.posts.count})</span>
-<% end %>
+		<p>@post.content</p>
+		<span>タグ</span>
+		<% @post_tags.each do |tag| %>
+			<%= link_to tag_posts_path(tag_id: tag.id) do %>
+					<%= tag.tag_name %>(<%= tag.posts.count %>)
+			<% end %>
+		<% end %>
 
-<%= link_to 'ホーム', root_path %>
+	</div>
+
+	<div class="post_edit">
+		<p>投稿編集</p>
+		<%= link_to "編集", edit_post_path(@post.id) %>
+		<%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+	</div>
+
+	<%= link_to 'ホーム', root_path %>
+
+</div>
