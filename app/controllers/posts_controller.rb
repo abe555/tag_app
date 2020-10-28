@@ -14,6 +14,8 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.all
+		#@tags = @post.tag.find(params[:tag_id])
+		#@post_tags = @tags.all
 		@tag_list = Tag.all
 		post = Post.new
 		@user = current_user
