@@ -12,21 +12,26 @@
 				<% end %>
 			<% end %>
 
+		<hr>
+		<div class="new_post">
+			<h3>新規投稿</h3>
+				<%= form_with(model: Post.new, url: posts_path, local: true) do |f| %>
+					<%= f.text_area :content %>
+					<br>
+					<p>スペースを入力することで複数のタグをつけることが出来ます。</p>
+					<P>例：音楽 文芸 スポーツ</P>
+					<%= f.text_field :tag_name %>
+					<%= f.submit '投稿', class: "btn btn-primary" %>
+				<% end %>
+		</div>
 
-		<h3>新規投稿</h3>
-			<%= form_with(model: Post.new, url: posts_path, local: true) do |f| %>
-				<%= f.text_area :content %>
-				<br>
-				<p>スペースを入力することで複数のタグをつけることが出来ます。</p>
-				<P>例：音楽 文芸 スポーツ</P>
-				<%= f.text_field :tag_name %>
-				<%= f.submit '投稿', class: "btn btn-primary" %>
-			<% end %>
-
+		<hr>
 		<h3>投稿一覧</h3>
-
 			<% @posts.each do |post| %>
-				<%= link_to post.content, post_path(post.id) %>
+				<div class="post_index">
+					<%= link_to post.content, post_path(post.id) %>
+
+				</div>
 			<% end %>
 
 	</div>

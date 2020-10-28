@@ -2,23 +2,25 @@
 
 	<div class="posts">
 		<h1>投稿詳細</h1>
-
-		<%= @post.content %>
-		<p>タグ</p>
-		<% @post_tags.each do |tag| %>
-			<%= link_to tag_posts_path(tag_id: tag.id) do %>
-					<%= tag.tag_name %>(<%= tag.posts.count %>)
+		<h3>内容</h3>
+			<%= @post.content %>
+		<h3>タグ</h3>
+			<% @post_tags.each do |tag| %>
+				<%= link_to tag_posts_path(tag_id: tag.id) do %>
+				<%= tag.tag_name %>(<%= tag.posts.count %>)
 			<% end %>
 		<% end %>
 
 	</div>
 
+	<hr>
 	<div class="post_edit">
 		<p>投稿編集</p>
-		<%= link_to "編集", edit_post_path(@post.id) %>
-		<%= link_to "削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+		<%= link_to "編集", edit_post_path(@post.id), class: "btn btn-default" %>
+		<%= link_to "削除", post_path(@post.id), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
 	</div>
 
+	<hr>
 	<%= link_to 'ホーム', root_path %>
 
 </div>
